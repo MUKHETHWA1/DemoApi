@@ -5,7 +5,7 @@ using DemoApi.Data;
 
 namespace DemoApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class HotelBookingController : ControllerBase
     {
@@ -58,6 +58,16 @@ namespace DemoApi.Controllers
             _context.SaveChanges();
 
             return new JsonResult(NoContent());
+        }
+
+        //Get All
+        //to return all bookings
+        [HttpGet()]
+        public JsonResult GetAll()
+        {
+            var result = _context.Bookings.ToList();
+
+            return new JsonResult(Ok(result));
         }
     }
 }
