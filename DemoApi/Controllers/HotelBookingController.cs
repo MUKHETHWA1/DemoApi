@@ -33,12 +33,12 @@ namespace DemoApi.Controllers
             return new JsonResult(Ok(booking));
         }
 
-        //Get
+        //Get Booking
         [HttpGet]
         public JsonResult Get(int id)
         {
             var result = _context.Bookings.Find(id);
-
+            //To check the Get
             if (result == null)
                 return new JsonResult(NotFound());
 
